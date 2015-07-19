@@ -245,12 +245,13 @@ class Twython(EndpointsMixin, object):
         :rtype: dict
         """
 
-        if endpoint.startswith('http://'):
-            raise TwythonError('api.twitter.com is restricted to SSL/TLS traffic.')
+        
+        #if endpoint.startswith('http://'):
+        #    raise TwythonError('api.twitter.com is restricted to SSL/TLS traffic.')
 
         # In case they want to pass a full Twitter URL
         # i.e. https://api.twitter.com/1.1/search/tweets.json
-        if endpoint.startswith('https://'):
+        if endpoint.startswith('https://') or endpoint.startswith('http://'):
             url = endpoint
         else:
             url = '%s/%s.json' % (self.api_url % version, endpoint)
